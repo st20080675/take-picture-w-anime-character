@@ -1,12 +1,11 @@
 import cv2
-
-image = cv2.imread('muichiro_white_bg_crop_02.jpg')
-# image = cv2.imread('nezuko_test.png')
-
-img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-ret, mask = cv2.threshold(img_gray, 250, 255, cv2.THRESH_BINARY)
-mask_inv = cv2.bitwise_not(mask)
-img = cv2.bitwise_and(image, image, mask=mask_inv)
+def mask_gen(intput_img):
+  image = cv2.imread(intput_img)
+  img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+  ret, mask = cv2.threshold(img_gray, 250, 255, cv2.THRESH_BINARY)
+  mask_inv = cv2.bitwise_not(mask)
+  img = cv2.bitwise_and(image, image, mask=mask_inv)
+  return img, mask
 
 def run(image, mask):
   """
@@ -63,4 +62,11 @@ def run(image, mask):
   # Destroy all windows
   cv2.destroyAllWindows()
 
-run(img, mask)
+if __name__ == "__main__":
+  # intput_img = 'nezuko_test.png'
+  # intput_img = 'muichiro_white_bg_crop_02.jpg'
+  # intput_img = 'nezuko_face_test.jpg'
+  intput_img = 'test04.jpg'
+
+  img, mask = mask_gen(intput_img)
+  run(img, mask)
