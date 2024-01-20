@@ -66,7 +66,7 @@ if __name__ == "__main__":
   # intput_img = 'nezuko_test.png'
   # intput_img = 'muichiro_white_bg_crop_02.jpg'
   # intput_img = 'nezuko_face_test.jpg'
-  intput_img = 'test04.jpg'
+  intput_img = 'hashiras.jpg'
 
   img, mask = mask_gen(intput_img)
   run(img, mask)
