@@ -37,6 +37,7 @@ def run(image, mask):
   while True:
     # Read a frame from the webcam
     ret, frame = cap.read()
+    frame = cv2.bilateralFilter(frame, 15, 40, 40)
 
     # Check if the frame was successfully read
     if not ret:
